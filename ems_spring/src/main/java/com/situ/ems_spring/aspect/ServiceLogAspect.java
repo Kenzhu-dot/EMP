@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class ServiceLogAspect {
     Logger logger = LoggerFactory.getLogger(ServiceLogAspect.class);
 
-    @Around("execution(* com.situ.springboot.service.impl.*.*(..))")
+    @Around("execution(* com.situ.ems_spring.service.impl.*.*(..))")
     public Object timeCheckLog(ProceedingJoinPoint joinPoint) throws Throwable {
 
         logger.info("你的{}.{}代码启动了！！！！！！！！！！！",joinPoint.getTarget().getClass(),joinPoint.getSignature().getName());

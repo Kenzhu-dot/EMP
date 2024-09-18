@@ -2,15 +2,17 @@ package com.situ.ems_spring.config;
 
 
 import com.situ.ems_spring.converter.String2DateConverter;
+import com.situ.ems_spring.interceptor.LoginInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-    /*@Override
+    @Override
     public void addInterceptors(InterceptorRegistry registry) {
         //把登录的拦截器配置上才能起作用
         // addPathPatterns("/**") 拦截器拦截所有的请求，静态资源也拦截了，需要放行
@@ -18,8 +20,8 @@ public class WebConfig implements WebMvcConfigurer {
         System.out.println("WebConfig.addInterceptors");
         registry.addInterceptor(new LoginInterceptor())
                 .addPathPatterns("/**")
-                .excludePathPatterns("/page/login", "/user/login", "/user/logout","/static/**");
-    }*/
+                .excludePathPatterns( "/page/login", "/static/**" ,"/user/login" ,"/user/logout");
+    }
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/pic/**")

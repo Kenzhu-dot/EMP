@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+       <!-- (name,gender,salary,role_id,leader_id)-->
+<mapper namespace="com.situ.ems_spring.mapper.EmployeeMapper">
+    <insert id="add">
+        INSERT INTO employee
+        <trim suffix=")" prefix="(" suffixOverrides=",">
+            <if test="name!=null and name!=''">
+                name,
+            </if>
+            <if test="gender!=null and gender!=''">
+                gender,
+            </if>
+            <if test="salary !=null">
+                salary,
+            </if>
+            <if test="roleId !=null">
+                role_id,
+            </if>
+            <if test="leaderId !=null">
+                leader_id,
+            </if>
+        </trim>
+        VALUES
+        <trim suffix=")" prefix="(" suffixOverrides=",">
+            <if test="name!=null and name!=''">
+                #{name},
+            </if>
+            <if test="gender!=null and gender!=''">
+                #{gender},
+            </if>
+            <if test="salary !=null">
+                #{salary},
+            </if>
+            <if test="roleId !=null">
+                #{roleId},
+            </if>
+            <if test="leaderId !=null">
+                #{leaderId},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateStatus">
+        UPDATE employee SET state = #{status} WHERE id = #{id}
+    </update>
+    <delete id="deleteById">
+        DELETE FROM employee WHERE id = #{id}
+    </delete>
+
+    <select id="selectByPage" resultType="com.situ.ems_spring.pojo.Employee">
+        select *,(SELECT `name` FROM employee WHERE id=b.leader_id)AS leader_name , (SELECT `name` FROM role WHERE role_id = role.id)AS role_name from employee AS b
+        <where>
+            <if test="employeePage.id!=null">
+                AND id = #{id}
+            </if>
+            <if test="employeePage.name != null and employeePage.name!=''">
+                AND name like concat('%',#{name},'%')
+            </if>
+            <if test="employeePage.gender != null and employeePage.gender!=''">
+                AND gender = #{gender}
+            </if>
+            <if test="employeePage.roleId!= null">
+                AND role_id= #{employeePage.roleId}
+            </if>
+            AND role_id &lt; #{roleId}
+        </where>
+    </select>
+</mapper>

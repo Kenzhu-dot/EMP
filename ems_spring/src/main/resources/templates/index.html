@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+	<title>主页</title>
+	<link rel="stylesheet" type="text/css" th:href="@{static/layui/css/layui.css}"/>
+	<script th:src="@{/static/layui/layui.js}" type="text/javascript" charset="utf-8"></script>
+	<script th:src="@{/static/mylayer.js}" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body class="layui-layout-body">
+	<div class="layui-layout layui-layout-admin">
+		<div class="layui-header">
+			<div class="layui-logo">员工管理系统</div>
+			<ul class="layui-nav layui-layout-left">   </ul>
+			<ul class="layui-nav layui-layout-right">
+				<li class="layui-nav-item">
+					<a href="javascript:;">
+						<img src="<%=path%>/img/fei.png" --%>
+						<img width="40px" height="30px" th:src="${session.user?.image}" />
+						<!-- 				        class="layui-nav-img"/> -->
+						<th:block th:text="${session.user?.id}"></th:block>
+					</a>
+					<dl class="layui-nav-child">
+						<dd>
+							<a href="javascript:openUser()">基本资料</a>
+						</dd>
+						<dd>
+							<a href="javascript:openPass()">修改密码</a>
+						</dd>
+						<dd>
+							<a href="javascript:openPic()">修改头像</a>
+						</dd>
+					</dl>
+				</li>
+				<li class="layui-nav-item">
+					<a href="javascript:logout()">注销</a>
+				</li>
+			</ul>
+		</div>
+		<div class="layui-side layui-bg-black">
+			<div class="layui-side-scroll">
+				<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+				<ul class="layui-nav layui-nav-tree" >
+					<li class="layui-nav-item layui-nav-itemed">
+						<a href="javascript:;">信息维护</a>
+						<dl class="layui-nav-child">
+
+							<th:block th:each="auth:${session.auths}">
+								<dd>
+									<a href="javascript:;"
+									   th:data-url="${auth.path}"
+									   class="site-demo-active" th:text="${auth.name}"></a>
+								</dd>
+							</th:block>
+						</dl>
+					</li>
+					<li class="layui-nav-item">
+						<a href="javascript:;">基础配置</a>
+						<dl class="layui-nav-child">
+							<dd>
+								<a href="javascript:;"
+								   class="site-demo-active"
+								   data-url="/page/blog/host">
+									基础数据维护</a>
+							</dd>
+							<dd>
+								<a href="javascript:;" class="site-demo-active"
+								   data-url="/com.situ.web/404.jsp">404-1</a>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="layui-body"><!-- 内容主体区域 -->
+			<iframe name="rightframe" width="99%" height="97%" src="/page/blog/host"></iframe>
+		</div>
+		<div class="layui-footer">© JAVA - 底部固定区域</div>
+	</div>
+	<script type="text/javascript">
+		var $ = layui.jquery;
+		var layer = layui.layer;
+		var element = layui.element;
+		$('.site-demo-active').click(function() {
+			window.open($(this).data('url'), "rightframe");
+		});
+		element.render();// element.init();
+		function openURL(url){
+			window.open(url, "rightframe");
+		}
+
+		function logout() {
+			layer.confirm('您确认要注销么?', {icon:3}, function() {
+				$.post(
+						"user/logout",
+						function (result) {
+							if (result.code == 0){
+								mylayer.okUrl(result.msg , "user/login")
+							}
+						},
+						"json"
+				)
+			});
+		}
+
+	</script>
+</body>
+</html>
