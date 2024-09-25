@@ -7,7 +7,7 @@ import com.sun.ems.pojo.page.XPage;
 
 import java.util.List;
 
-public interface IemployeeService {
+public interface IEmployeeService {
     PageResult selectByPage(XPage<Employee> employeePage ,Integer id ,String pwd);
 
     void add(Employee employee);

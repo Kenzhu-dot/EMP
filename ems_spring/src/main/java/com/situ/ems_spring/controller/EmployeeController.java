@@ -4,8 +4,11 @@ import com.situ.ems_spring.pojo.Employee;
 import com.situ.ems_spring.pojo.Page.EmployeePage;
 import com.situ.ems_spring.pojo.Page.XPage;
 import com.situ.ems_spring.pojo.PageResult;
+import com.situ.ems_spring.pojo.Role;
 import com.situ.ems_spring.pojo.Users;
+import com.situ.ems_spring.pojo.VO.NVO;
 import com.situ.ems_spring.service.IEmployeeService;
+import com.situ.ems_spring.service.IRoleService;
 import com.situ.ems_spring.util.Result;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -14,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/employee")
@@ -21,6 +27,8 @@ public class EmployeeController {
 
     @Autowired
     IEmployeeService employeeService;
+    @Autowired
+    IRoleService roleService;
 
     @RequestMapping("/updateStatus")
     public Result updateStatus(HttpServletRequest req){
@@ -64,7 +72,28 @@ public class EmployeeController {
         employeeService.deleteAll(ids);
         return Result.ok("删除成功");
     }
+    @RequestMapping("/edit")
+    public Result edit(Employee employee){
+        employeeService.edit(employee);
+        return Result.ok("编辑成功");
+    }
 
+    @RequestMapping("/selectById")
+    public Result selectById(Integer id , HttpSession session){
+        Users user = (Users) session.getAttribute("user");
+        List<Role> roles = roleService.LTById(user.getRoleId());
+        Employee employee = employeeService.selectById(id);
+        Map<String,Object> map = new HashMap();
+        map.put("employee",employee);
+        map.put("roles",roles);
+        return Result.ok(map);
+    }
+
+    @RequestMapping("/selectNumber")
+    public List<NVO> selectNumber(){
+        List<NVO> numbs =  employeeService.selectNumber();
+        return numbs;
+    }
 
 
 

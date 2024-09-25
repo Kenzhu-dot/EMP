@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ems2?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: admin
+  data:
+    redis:
+      database: 0
+      host: 127.0.0.1
+      port: 6379
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #mybatis官方提供的控制台打印日志
+  type-aliases-package: com.situ.mp.pojo
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+  #   logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+  #   logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)

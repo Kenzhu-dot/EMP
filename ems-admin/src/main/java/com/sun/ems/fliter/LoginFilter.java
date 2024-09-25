@@ -3,9 +3,9 @@ package com.sun.ems.fliter;
 
 import com.sun.ems.pojo.Auth;
 import com.sun.ems.pojo.Users;
-import com.sun.ems.service.IauthService;
-import com.sun.ems.service.IroleService;
-import com.sun.ems.service.IusersService;
+import com.sun.ems.service.IAuthService;
+import com.sun.ems.service.IRoleService;
+import com.sun.ems.service.IUsersService;
 import com.sun.ems.service.impl.AuthServiceImpl;
 import com.sun.ems.service.impl.RoleServiceImpl;
 import com.sun.ems.service.impl.UsersServiceImpl;
@@ -45,14 +45,14 @@ public class LoginFilter implements Filter {
                 String[] values = cookie.getValue().split("&");
                 String id = values[0];
                 String password = values[1];
-                IusersService usersService = new UsersServiceImpl();
+                IUsersService usersService = new UsersServiceImpl();
                 Users user = usersService.login(Integer.parseInt(id), password);
                 if (user != null) {
                     session.setAttribute("user", user);
                     Integer roleId = user.getRoleId();
-                    IroleService roleService = new RoleServiceImpl();
+                    IRoleService roleService = new RoleServiceImpl();
                     List<Integer> authIds = roleService.selectByRoleId(roleId);
-                    IauthService authService = new AuthServiceImpl();
+                    IAuthService authService = new AuthServiceImpl();
                     List<Auth> authList = new ArrayList<>();
                     for (Integer authId : authIds) {
                         Auth auth=authService.selectById(authId);

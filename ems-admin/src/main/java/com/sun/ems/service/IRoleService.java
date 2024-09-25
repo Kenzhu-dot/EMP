@@ -3,10 +3,9 @@ package com.sun.ems.service;
 import com.sun.ems.pojo.Auth;
 import com.sun.ems.pojo.Role;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public interface IroleService {
+public interface IRoleService {
     List<Integer> selectByRoleId(Integer roleId);
     List<Role> LTById(Integer roleId);
 

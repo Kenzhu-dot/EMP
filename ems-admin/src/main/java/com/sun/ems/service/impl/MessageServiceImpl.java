@@ -1,6 +1,6 @@
 package com.sun.ems.service.impl;
 
-import com.sun.ems.service.ImessageService;
+import com.sun.ems.service.IMessageService;
 
-public class MessageServiceImpl implements ImessageService {
+public class MessageServiceImpl implements IMessageService {
 }

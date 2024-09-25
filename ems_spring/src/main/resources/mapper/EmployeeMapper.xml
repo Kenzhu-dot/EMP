@@ -46,6 +46,24 @@
     <update id="updateStatus">
         UPDATE employee SET state = #{status} WHERE id = #{id}
     </update>
+    <update id="edit">
+        UPDATE employee
+        <set>
+            <if test="name!=null and name!=''">
+                name = #{name},
+            </if>
+            <if test="gender!=null and gender!=''">
+                gender=#{gender},
+            </if>
+            <if test="salary!=null">
+                salary = #{salary},
+            </if>
+            <if test="roleId!=null">
+                role_id = #{roleId}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
     <delete id="deleteById">
         DELETE FROM employee WHERE id = #{id}
     </delete>
@@ -67,5 +85,11 @@
             </if>
             AND role_id &lt; #{roleId}
         </where>
+    </select>
+    <select id="selectById" resultType="com.situ.ems_spring.pojo.Employee">
+        SELECT * FROM employee WHERE id = #{id}
+    </select>
+    <select id="selectNumber" resultType="com.situ.ems_spring.pojo.VO.NVO">
+        SELECT role.`name`,COUNT(*) AS value FROM employee INNER JOIN role WHERE employee.role_id=role.id GROUP BY role_id
     </select>
 </mapper>

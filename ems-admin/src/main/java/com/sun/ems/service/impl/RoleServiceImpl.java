@@ -4,12 +4,12 @@ import com.sun.ems.dao.IroleDao;
 import com.sun.ems.dao.impl.RoleDaoImpl;
 import com.sun.ems.pojo.Auth;
 import com.sun.ems.pojo.Role;
-import com.sun.ems.service.IroleService;
+import com.sun.ems.service.IRoleService;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public class RoleServiceImpl implements IroleService {
+public class RoleServiceImpl implements IRoleService {
     IroleDao roleDao = new RoleDaoImpl();
     @Override
     public List<Integer> selectByRoleId(Integer roleId) {

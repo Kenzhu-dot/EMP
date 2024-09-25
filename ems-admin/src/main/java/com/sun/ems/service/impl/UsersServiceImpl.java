@@ -6,11 +6,11 @@ import com.sun.ems.dao.impl.UsersDaoImpl;
 import com.sun.ems.pojo.Users;
 import com.sun.ems.pojo.page.PageResult;
 import com.sun.ems.pojo.page.XPage;
-import com.sun.ems.service.IusersService;
+import com.sun.ems.service.IUsersService;
 
 import java.util.List;
 
-public class UsersServiceImpl implements IusersService {
+public class UsersServiceImpl implements IUsersService {
 
 
     IusersDao usersDao = new UsersDaoImpl();

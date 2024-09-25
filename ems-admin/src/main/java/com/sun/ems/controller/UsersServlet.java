@@ -5,9 +5,9 @@ import com.sun.ems.pojo.Auth;
 import com.sun.ems.pojo.Users;
 import com.sun.ems.pojo.page.PageResult;
 import com.sun.ems.pojo.page.XPage;
-import com.sun.ems.service.IauthService;
-import com.sun.ems.service.IroleService;
-import com.sun.ems.service.IusersService;
+import com.sun.ems.service.IAuthService;
+import com.sun.ems.service.IRoleService;
+import com.sun.ems.service.IUsersService;
 import com.sun.ems.service.impl.AuthServiceImpl;
 import com.sun.ems.service.impl.RoleServiceImpl;
 import com.sun.ems.service.impl.UsersServiceImpl;
@@ -26,7 +26,7 @@ import java.util.List;
 
 @WebServlet("/users")
 public class UsersServlet extends HttpServlet {
-    IusersService usersService = new UsersServiceImpl();
+    IUsersService usersService = new UsersServiceImpl();
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String method = req.getParameter("method");
@@ -144,10 +144,10 @@ public class UsersServlet extends HttpServlet {
         }
         session.setAttribute("user", users);
         Integer roleId = users.getRoleId();
-        IroleService roleService = new RoleServiceImpl();
+        IRoleService roleService = new RoleServiceImpl();
         List<Integer> authIds = roleService.selectByRoleId(roleId);
 
-        IauthService authService = new AuthServiceImpl();
+        IAuthService authService = new AuthServiceImpl();
         List<Auth> authList = new ArrayList<>();
         for (Integer authId : authIds) {
             Auth auth=authService.selectById(authId);

@@ -6,10 +6,17 @@
       <list>
         <option value="$PROJECT_DIR$/ems-admin/pom.xml" />
         <option value="$PROJECT_DIR$/ems-protal/pom.xml" />
+        <option value="$PROJECT_DIR$/ems_spring/pom.xml" />
+        <option value="$PROJECT_DIR$/ems-vue/pom.xml" />
       </list>
     </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/ems-protal/pom.xml" />
+      </set>
+    </option>
   </component>
-  <component name="ProjectRootManager">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

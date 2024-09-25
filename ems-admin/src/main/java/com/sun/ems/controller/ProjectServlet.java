@@ -4,9 +4,8 @@ import com.sun.ems.pojo.Users;
 import com.sun.ems.pojo.page.PageResult;
 import com.sun.ems.pojo.page.ProjectPage;
 import com.sun.ems.pojo.page.XPage;
-import com.sun.ems.service.IprojectService;
+import com.sun.ems.service.IProjectService;
 import com.sun.ems.service.impl.ProjectServiceImpl;
-import com.sun.ems.util.CookieUtil;
 import com.sun.ems.util.JSONUtil;
 import com.sun.ems.util.MyBeanUtil;
 import com.sun.ems.util.Result;
@@ -18,7 +17,7 @@ import java.io.IOException;
 
 @WebServlet("/project")
 public class ProjectServlet extends HttpServlet {
-    IprojectService projectService = new ProjectServiceImpl();
+    IProjectService projectService = new ProjectServiceImpl();
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String method = req.getParameter("method");

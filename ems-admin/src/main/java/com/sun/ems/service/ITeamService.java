@@ -4,6 +4,6 @@ import com.sun.ems.pojo.Team;
 import com.sun.ems.pojo.page.PageResult;
 import com.sun.ems.pojo.page.XPage;
 
-public interface IteamService {
+public interface ITeamService {
     PageResult selectByPage(XPage<Team> teamPage, Integer id, String pwd);
 }

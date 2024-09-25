@@ -2,15 +2,14 @@ package com.sun.ems.controller;
 
 import com.sun.ems.dao.IemployeeDao;
 import com.sun.ems.dao.impl.EmployeeDaoImpl;
-import com.sun.ems.pojo.Auth;
 import com.sun.ems.pojo.Employee;
 import com.sun.ems.pojo.Role;
 import com.sun.ems.pojo.Users;
 import com.sun.ems.pojo.VO.NVO;
 import com.sun.ems.pojo.page.PageResult;
 import com.sun.ems.pojo.page.XPage;
-import com.sun.ems.service.IemployeeService;
-import com.sun.ems.service.IroleService;
+import com.sun.ems.service.IEmployeeService;
+import com.sun.ems.service.IRoleService;
 import com.sun.ems.service.impl.EmployeeServiceImpl;
 import com.sun.ems.service.impl.RoleServiceImpl;
 import com.sun.ems.util.JSONUtil;
@@ -29,7 +28,7 @@ import java.util.Map;
 
 @WebServlet("/employee")
 public class EmployeeServlet extends HttpServlet {
-    IemployeeService employeeService = new EmployeeServiceImpl();
+    IEmployeeService employeeService = new EmployeeServiceImpl();
     IemployeeDao employeeDao = new EmployeeDaoImpl();
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -82,7 +81,7 @@ public class EmployeeServlet extends HttpServlet {
         String id = req.getParameter("id");
         HttpSession session = req.getSession();
         Users user = (Users) session.getAttribute("user");
-        IroleService roleService = new RoleServiceImpl();
+        IRoleService roleService = new RoleServiceImpl();
         List<Role> roles = roleService.LTById(user.getRoleId());
         Employee employee = employeeService.selectById(Integer.parseInt(id));
         Map<String,Object> map = new HashMap();

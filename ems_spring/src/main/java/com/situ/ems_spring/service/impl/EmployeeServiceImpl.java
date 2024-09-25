@@ -6,7 +6,7 @@ import com.situ.ems_spring.mapper.UserMapper;
 import com.situ.ems_spring.pojo.Employee;
 import com.situ.ems_spring.pojo.Page.EmployeePage;
 import com.situ.ems_spring.pojo.PageResult;
-import com.situ.ems_spring.pojo.Users;
+import com.situ.ems_spring.pojo.VO.NVO;
 import com.situ.ems_spring.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,5 +55,20 @@ public class EmployeeServiceImpl implements IEmployeeService {
         for (String id : ids) {
             employeeMapper.deleteById(Integer.parseInt(id));
         }
+    }
+
+    @Override
+    public void edit(Employee employee) {
+        employeeMapper.edit(employee);
+    }
+
+    @Override
+    public Employee selectById(Integer id) {
+       return employeeMapper.selectById(id);
+    }
+
+    @Override
+    public List<NVO> selectNumber() {
+        return employeeMapper.selectNumber();
     }
 }

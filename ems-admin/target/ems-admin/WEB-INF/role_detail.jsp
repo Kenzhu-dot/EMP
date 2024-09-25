@@ -40,7 +40,7 @@
             height: '315px',
             cols: [[
                 // 模板 - 选择器写法
-                {field: 'auth' , title: 'name'},
+                {field: 'auth' , title: '权限名' , templet: '<div>{{d.auth.name}}</div>'},
                 // 模板 - 函数写法
                 {field:'state',title: '状态', width:85,templet: '#stausSwitchId'},]]
         });

@@ -1,11 +1,8 @@
 package com.sun.ems.dao.impl;
 
 import com.sun.ems.dao.IteamDao;
-import com.sun.ems.pojo.Employee;
 import com.sun.ems.pojo.Team;
-import com.sun.ems.pojo.page.PageResult;
 import com.sun.ems.pojo.page.XPage;
-import com.sun.ems.service.IteamService;
 import com.sun.ems.util.JDBCUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;

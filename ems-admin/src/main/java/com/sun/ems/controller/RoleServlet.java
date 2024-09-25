@@ -3,7 +3,7 @@ package com.sun.ems.controller;
 import com.sun.ems.pojo.Auth;
 import com.sun.ems.pojo.Role;
 import com.sun.ems.pojo.Users;
-import com.sun.ems.service.IroleService;
+import com.sun.ems.service.IRoleService;
 import com.sun.ems.service.impl.RoleServiceImpl;
 import com.sun.ems.util.JSONUtil;
 import com.sun.ems.util.Result;
@@ -19,7 +19,7 @@ import java.util.List;
 
 @WebServlet("/role")
 public class RoleServlet extends HttpServlet {
-    IroleService roleService = new RoleServiceImpl();
+    IRoleService roleService = new RoleServiceImpl();
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

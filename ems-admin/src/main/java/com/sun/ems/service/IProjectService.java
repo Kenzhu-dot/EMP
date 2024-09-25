@@ -7,7 +7,7 @@ import com.sun.ems.pojo.page.XPage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public interface IprojectService {
+public interface IProjectService {
     PageResult selectByPage(XPage<ProjectPage> xPage);
 
     void exportExcel(HttpServletResponse resp);

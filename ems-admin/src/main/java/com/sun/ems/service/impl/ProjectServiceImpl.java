@@ -6,19 +6,17 @@ import com.sun.ems.dao.impl.EmployeeDaoImpl;
 import com.sun.ems.dao.impl.ProjectDaoImpl;
 import com.sun.ems.listener.ExeclListener;
 import com.sun.ems.pojo.Employee;
-import com.sun.ems.pojo.Users;
 import com.sun.ems.pojo.page.PageResult;
 import com.sun.ems.pojo.page.ProjectPage;
 import com.sun.ems.pojo.page.XPage;
-import com.sun.ems.service.IprojectService;
+import com.sun.ems.service.IProjectService;
 import com.sun.ems.util.ExcelUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 import java.util.List;
 
-public class ProjectServiceImpl implements IprojectService {
+public class ProjectServiceImpl implements IProjectService {
     IprojectDao projectDao = new ProjectDaoImpl();
     @Override
     public PageResult selectByPage(XPage<ProjectPage> xPage) {

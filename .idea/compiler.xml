@@ -7,9 +7,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="ems_spring" />
+        <module name="ems-vue" />
         <module name="ems-admin" />
-        <module name="ems-protal" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ems-protal" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ems-vue" options="-parameters" />
+      <module name="ems_spring" options="-parameters" />
+    </option>
   </component>
 </project>

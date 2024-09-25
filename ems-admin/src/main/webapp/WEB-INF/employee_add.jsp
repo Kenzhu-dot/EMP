@@ -36,8 +36,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">职位</label>
         <div class="layui-input-inline">
-            <select name="roleId" id="roleName">
-            </select>
+            <select name="roleId" id="roleName"></select>
         </div>
     </div>
     <div class="layui-form-item">
@@ -77,7 +76,6 @@
                 $(result.data).each(function (){
                     $("#roleName").append("<option value="+this.id+">"+this.name+"</option>");
                 })
-
                 form.render("select");
             },
             "json"

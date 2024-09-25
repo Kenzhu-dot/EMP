@@ -9,12 +9,11 @@ import com.sun.ems.pojo.Users;
 import com.sun.ems.pojo.VO.NVO;
 import com.sun.ems.pojo.page.PageResult;
 import com.sun.ems.pojo.page.XPage;
-import com.sun.ems.service.IemployeeService;
-import com.sun.ems.service.IusersService;
+import com.sun.ems.service.IEmployeeService;
 
 import java.util.List;
 
-public class EmployeeServiceImpl implements IemployeeService {
+public class EmployeeServiceImpl implements IEmployeeService {
     IemployeeDao employeeDao = new EmployeeDaoImpl();
     IusersDao usersDao = new UsersDaoImpl();
     @Override
