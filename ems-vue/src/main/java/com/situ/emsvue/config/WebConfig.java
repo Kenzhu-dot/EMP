@@ -22,12 +22,12 @@ public class WebConfig implements WebMvcConfigurer {
                 .addPathPatterns("/**")
                 .excludePathPatterns("/page/login", "/user/login", "/user/logout" , "/captcha");
     }
-    @Override
+/*    @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/pic/**")
                 .addResourceLocations("file:/D:/Demo/ProgrameDemo/blogimage/");
         WebMvcConfigurer.super.addResourceHandlers(registry);
-    }
+    }*/
     @Override
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(new String2DateConverter() );

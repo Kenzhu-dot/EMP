@@ -92,7 +92,7 @@
         form.on('submit(demo-login)', function (data) {
             var field = data.field; // 获取表单字段值
             $.post(
-                '/user/login',
+                '/users/login',
                 field,
                 function (result) {
                     console.log(result);

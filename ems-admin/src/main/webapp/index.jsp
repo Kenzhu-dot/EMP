@@ -18,7 +18,7 @@
                 <a href="javascript:;">
                     <%-- 				        <img src="<%=path%>/img/fei.png" --%>
                     <!-- 				        class="layui-nav-img"/> -->
-                     ${user.id}
+                     ${users.id}
                 </a>
                 <dl class="layui-nav-child">
                     <dd>
@@ -122,7 +122,7 @@
                 '您确认要退出么',
                 {icon:3},
                 function() {
-                    location.href = '/user?method=logout'
+                    location.href = '/users?method=logout'
                 }
         );*/
     }

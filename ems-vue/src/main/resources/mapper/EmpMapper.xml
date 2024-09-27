@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.situ.emsvue.mapper.EmpMapper">
+    <insert id="add">
+        INSERT INTO employee
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name!='' and name!=null">
+                 name,
+            </if>
+            <if test="salary!=null">
+                 salary,
+            </if>
+            <if test="gender!='' and gender!=null">
+                 gender,
+            </if>
+            <if test=" roleId!=null">
+                 role_id,
+            </if>
+            <if test=" leaderId!=null">
+                 leader_id,
+            </if>
+        </trim>
+        VALUES
+            <trim prefix="(" suffix=")"  suffixOverrides=",">
+                <if test="name!='' and name!=null">
+                    #{name},
+                </if>
+                <if test="salary!=null">
+                    #{salary},
+                </if>
+                <if test="gender!='' and gender!=null">
+                    #{gender},
+                </if>
+                <if test=" roleId!=null">
+                    #{roleId},
+                </if>
+                <if test=" leaderId!=null">
+                    #{leaderId},
+                </if>
+            </trim>
+    </insert>
+    <update id="deleteById">
+        UPDATE employee SET deleted=1 WHERE id=#{id}
+    </update>
+
+    <select id="list" resultType="com.situ.emsvue.pojo.VO.EmpVO">
+        SELECT *,(SELECT `name` FROM employee WHERE id=b.leader_id)AS leader_name , (SELECT `name` FROM role WHERE role_id = role.id)AS role_name from employee AS b
+        <where>
+            <if test="empQuery.name!='' and empQuery.name!=null">
+                AND name LIKE CONCAT ('%',#{empQuery.name},'%')
+            </if>
+            <if test="empQuery.gender!='' and empQuery.gender!=null">
+                AND gender=#{empQuery.gender}
+            </if>
+            <if test="empQuery.roleId!=null">
+                AND role_id=#{empQuery.roleId}
+            </if>
+            <if test="empQuery.leaderId!=null">
+                AND leader_id=#{empQuery.leaderId}
+            </if>
+            AND deleted  = 0 AND role_id &lt;#{roleId}
+        </where>
+    </select>
+    <select id="selectById" resultType="com.situ.emsvue.pojo.Emp">
+        SELECT * FROM employee WHERE id=#{id}
+    </select>
+</mapper>

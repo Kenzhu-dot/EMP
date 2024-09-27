@@ -16,9 +16,9 @@
 				<li class="layui-nav-item">
 					<a href="javascript:;">
 						<img src="<%=path%>/img/fei.png" --%>
-						<img width="40px" height="30px" th:src="${session.user?.image}" />
+						<img width="40px" height="30px" th:src="${session.users?.image}" />
 						<!-- 				        class="layui-nav-img"/> -->
-						<th:block th:text="${session.user?.id}"></th:block>
+						<th:block th:text="${session.users?.id}"></th:block>
 					</a>
 					<dl class="layui-nav-child">
 						<dd>
@@ -92,10 +92,10 @@
 		function logout() {
 			layer.confirm('您确认要注销么?', {icon:3}, function() {
 				$.post(
-						"user/logout",
+						"users/logout",
 						function (result) {
 							if (result.code == 0){
-								mylayer.okUrl(result.msg , "user/login")
+								mylayer.okUrl(result.msg , "users/login")
 							}
 						},
 						"json"

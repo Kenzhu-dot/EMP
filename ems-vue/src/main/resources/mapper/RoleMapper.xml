@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.situ.emsvue.mapper.RoleMapper">
+    <select id="userInform" resultType="com.situ.emsvue.pojo.Auth">
+        SELECT * FROM auth WHERE id IN (SELECT auth_id FROM role_to_auth WHERE role_id=#{roleId})
+    </select>
+    <select id="list" resultType="com.situ.emsvue.pojo.Role">
+        SELECT * FROM role
+    </select>
+</mapper>
