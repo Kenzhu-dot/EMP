@@ -10,4 +10,7 @@ public interface RoleMapper {
 
     List<Role> list();
 
+    void addMid(Integer roleId, Integer authId);
+
+    void deletMid(Integer roleId, Integer authId);
 }

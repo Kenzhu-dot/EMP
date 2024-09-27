@@ -7,10 +7,21 @@
     <update id="updatePassword">
         UPDATE users SET pwd=#{newPassword}
     </update>
+    <update id="edit">
+        UPDATE users
+        <set>
+            <if test="image!=null and image!= '' ">
+                image =#{image},
+            </if>
+        </set>
+    </update>
     <select id="login" resultType="com.situ.emsvue.pojo.Users">
         SELECT * FROM users WHERE id=#{id} AND pwd=#{pwd}
     </select>
     <select id="selectOldPassword" resultType="com.situ.emsvue.pojo.Users">
         SELECT * FROM users WHERE id=#{id} AND pwd = #{oldPassword}
+    </select>
+    <select id="allInfo" resultType="com.situ.emsvue.pojo.VO.UserInfoVO">
+        SELECT name,image,gender FROM users INNER JOIN employee ON users.id=employee.id WHERE users.id=#{id}
     </select>
 </mapper>

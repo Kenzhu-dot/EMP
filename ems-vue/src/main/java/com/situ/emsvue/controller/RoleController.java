@@ -25,10 +25,16 @@ public class RoleController {
     }
 
     @PostMapping("/edit/{id}")
-    public Result edit(@PathVariable Integer id , @RequestHeader(name = "Authorization") String token) {
+    public Result edit(@PathVariable Integer id ) {
         System.out.println("-----------------------------------------"+id);
         List<AuthVO> authVOs = roleService.edit(id);
         return Result.ok(authVOs);
+    }
+
+    @PutMapping("/updateMid/{id}")
+    public Result updateMid(@PathVariable Integer id , @RequestBody AuthVO[] authVO) {
+        roleService.updateMid(id , authVO);
+        return Result.ok("更新成功");
     }
 
 }

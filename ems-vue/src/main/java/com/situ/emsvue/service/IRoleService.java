@@ -10,4 +10,6 @@ public interface IRoleService {
     List<Role> list();
 
     List<AuthVO> edit(Integer id);
+
+    void updateMid(Integer id, AuthVO[] authVO);
 }

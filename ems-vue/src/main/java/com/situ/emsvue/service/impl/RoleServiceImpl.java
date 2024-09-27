@@ -41,5 +41,19 @@ public class RoleServiceImpl implements IRoleService {
         return authVOs;
     }
 
+    @Override
+    public void updateMid(Integer id, AuthVO[] authVO) {
+        for (AuthVO authVO1 : authVO) {
+            try {
+                if (authVO1.getMidStatus() == 1) {
+                    roleMapper.addMid(id , authVO1.getId());
+                }else {
+                    roleMapper.deletMid(id , authVO1.getId());
+                }
+            }catch (RuntimeException runtimeException){}
+
+        }
+    }
+
 
 }

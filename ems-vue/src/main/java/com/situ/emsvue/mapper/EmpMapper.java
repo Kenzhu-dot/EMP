@@ -14,4 +14,6 @@ public interface EmpMapper {
     void deleteById(Integer id);
 
     void add(Emp emp);
+
+    void edit(Emp emp);
 }

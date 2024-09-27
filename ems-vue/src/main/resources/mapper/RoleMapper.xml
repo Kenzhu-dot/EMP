@@ -4,6 +4,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.situ.emsvue.mapper.RoleMapper">
+    <insert id="addMid">
+        INSERT INTO role_to_auth(role_id , auth_id) VALUES(#{roleId},#{authId})
+    </insert>
+    <delete id="deletMid">
+        DELETE FROM role_to_auth WHERE role_id=#{roleId} AND auth_id=#{authId}
+    </delete>
     <select id="userInform" resultType="com.situ.emsvue.pojo.Auth">
         SELECT * FROM auth WHERE id IN (SELECT auth_id FROM role_to_auth WHERE role_id=#{roleId})
     </select>

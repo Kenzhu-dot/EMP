@@ -25,7 +25,6 @@ public class EmpServiceImpl implements IEmpService {
     private RoleMapper roleMapper;
     @Override
     public Map<String,Object> list(EmpQuery empQuery  , Integer roleId) {
-        System.out.println(empQuery);
         PageHelper.startPage(empQuery.getPage(),empQuery.getLimit());
          List<EmpVO> emps  = empMapper.list(empQuery,roleId);
         PageInfo<EmpVO> pageInfo = new PageInfo<>(emps);
@@ -55,5 +54,10 @@ public class EmpServiceImpl implements IEmpService {
         for (Integer id : ids) {
             empMapper.deleteById(id);
         }
+    }
+
+    @Override
+    public void edit(Emp emp) {
+        empMapper.edit(emp);
     }
 }

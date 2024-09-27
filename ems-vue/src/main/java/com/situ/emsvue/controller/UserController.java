@@ -1,12 +1,15 @@
 package com.situ.emsvue.controller;
 import com.situ.emsvue.pojo.Auth;
+import com.situ.emsvue.pojo.Emp;
 import com.situ.emsvue.pojo.Info.LoginInfo;
 import com.situ.emsvue.pojo.Users;
+import com.situ.emsvue.pojo.VO.UserInfoVO;
 import com.situ.emsvue.pojo.dto.UserPassword;
 import com.situ.emsvue.service.IUserService;
 import com.situ.emsvue.util.CommonUtil;
 import com.situ.emsvue.util.JwtUtil;
 import com.situ.emsvue.util.Result;
+import com.situ.emsvue.util.ThreadLocalUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -54,8 +57,8 @@ public class UserController {
     }
 
     @PutMapping("/resetPassword")
-    public Result userPassword(@RequestHeader(name = "Authorization")String token , @RequestBody UserPassword userPassword) {
-        Map<String, Object> map = JwtUtil.parseToken(token);
+    public Result userPassword( @RequestBody UserPassword userPassword) {
+        Map<String , Object> map = ThreadLocalUtil.get();
         Integer id = (Integer) map.get("id");
         Users user = userService.selectOldPassword(id , userPassword.getOldPassword());
         if (user == null){
@@ -63,6 +66,20 @@ public class UserController {
         }
         userService.updatePassword(id , userPassword.getNewPassword());
         return Result.ok("Success");
+    }
+
+    @GetMapping("/allInfo")
+    public Result allInfo() {
+       Map<String,Object>map  = ThreadLocalUtil.get();
+        Integer id = (Integer) map.get("id");
+        UserInfoVO userInfoVO = userService.allInfo(id);
+        return Result.ok(userInfoVO);
+    }
+
+    @PutMapping("/edit")
+    public Result edit(@RequestBody UserInfoVO userInfoVO) {
+        userService.edit(userInfoVO);
+        return Result.ok("Success!");
     }
 
 }

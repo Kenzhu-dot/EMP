@@ -45,6 +45,24 @@
     <update id="deleteById">
         UPDATE employee SET deleted=1 WHERE id=#{id}
     </update>
+    <update id="edit">
+        UPDATE employee
+        <set>
+            <if test="name!=null and name !=''">
+                name = #{name},
+            </if>
+            <if test="gender!=null and gender!=''">
+                gender=#{gender},
+            </if>
+            <if test="salary!=null">
+                salary=#{salary},
+            </if>
+            <if test="leaderId != null">
+                leader_id = #{leaderId},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
 
     <select id="list" resultType="com.situ.emsvue.pojo.VO.EmpVO">
         SELECT *,(SELECT `name` FROM employee WHERE id=b.leader_id)AS leader_name , (SELECT `name` FROM role WHERE role_id = role.id)AS role_name from employee AS b

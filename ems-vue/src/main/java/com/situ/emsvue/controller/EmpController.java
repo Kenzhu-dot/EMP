@@ -5,6 +5,7 @@ import com.situ.emsvue.pojo.Query.EmpQuery;
 import com.situ.emsvue.service.IEmpService;
 import com.situ.emsvue.util.JwtUtil;
 import com.situ.emsvue.util.Result;
+import com.situ.emsvue.util.ThreadLocalUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,8 +19,8 @@ public class EmpController {
     IEmpService empService;
 
     @GetMapping("/list")
-    public Result List(EmpQuery empQuery, @RequestHeader(name = "Authorization")String token){
-        Map<String, Object> map = JwtUtil.parseToken(token);
+    public Result List(EmpQuery empQuery){
+        Map<String, Object> map = ThreadLocalUtil.get();
         Integer roleId = (Integer) map.get("roleId");
         Map<String, Object> result = empService.list(empQuery , roleId);
         return Result.ok(result);
@@ -47,5 +48,11 @@ public class EmpController {
     public Result add(@RequestBody Emp emp){
         empService.add(emp);
         return Result.ok("添加成功");
+    }
+
+    @PutMapping("/edit")
+    public Result edit(@RequestBody Emp emp){
+        empService.edit(emp);
+        return Result.ok("更新成功");
     }
 }

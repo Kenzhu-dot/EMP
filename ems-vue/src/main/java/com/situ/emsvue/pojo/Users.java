@@ -9,4 +9,5 @@ public class Users {
     private Integer roleId;
     private Integer status;
     private Integer deleted;
+    private String image;
 }

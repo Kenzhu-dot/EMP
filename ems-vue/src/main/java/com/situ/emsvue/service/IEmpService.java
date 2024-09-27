@@ -16,4 +16,6 @@ public interface IEmpService {
     void add(Emp emp);
 
     void deleteAll(Integer[] ids);
+
+    void edit(Emp emp);
 }
