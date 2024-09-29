@@ -1,9 +1,8 @@
 package com.situ.emsvue.service;
 
-import com.situ.emsvue.pojo.Auth;
-import com.situ.emsvue.pojo.Emp;
+import com.situ.emsvue.pojo.entity.Auth;
 import com.situ.emsvue.pojo.Info.LoginInfo;
-import com.situ.emsvue.pojo.Users;
+import com.situ.emsvue.pojo.entity.Users;
 import com.situ.emsvue.pojo.VO.UserInfoVO;
 
 import java.util.List;

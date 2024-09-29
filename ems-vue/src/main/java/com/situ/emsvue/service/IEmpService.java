@@ -1,9 +1,8 @@
 package com.situ.emsvue.service;
 
-import com.situ.emsvue.pojo.Emp;
+import com.situ.emsvue.pojo.entity.Emp;
 import com.situ.emsvue.pojo.Query.EmpQuery;
 
-import java.util.List;
 import java.util.Map;
 
 public interface IEmpService {

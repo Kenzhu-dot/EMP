@@ -2,15 +2,13 @@ package com.situ.emsvue.service.impl;
 
 import com.situ.emsvue.mapper.AuthMapper;
 import com.situ.emsvue.mapper.RoleMapper;
-import com.situ.emsvue.pojo.Auth;
-import com.situ.emsvue.pojo.Role;
+import com.situ.emsvue.pojo.entity.Auth;
+import com.situ.emsvue.pojo.entity.Role;
 import com.situ.emsvue.pojo.VO.AuthVO;
-import com.situ.emsvue.service.IEmpService;
 import com.situ.emsvue.service.IRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

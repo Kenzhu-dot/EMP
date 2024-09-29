@@ -82,7 +82,7 @@
             AND deleted  = 0 AND role_id &lt;#{roleId}
         </where>
     </select>
-    <select id="selectById" resultType="com.situ.emsvue.pojo.Emp">
+    <select id="selectById" resultType="com.situ.emsvue.pojo.entity.Emp">
         SELECT * FROM employee WHERE id=#{id}
     </select>
 </mapper>

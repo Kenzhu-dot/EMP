@@ -4,13 +4,12 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.situ.emsvue.mapper.EmpMapper;
 import com.situ.emsvue.mapper.RoleMapper;
-import com.situ.emsvue.pojo.Emp;
+import com.situ.emsvue.pojo.entity.Emp;
 import com.situ.emsvue.pojo.Query.EmpQuery;
 import com.situ.emsvue.pojo.VO.EmpVO;
 import com.situ.emsvue.service.IEmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestHeader;
 
 import java.util.HashMap;
 import java.util.List;

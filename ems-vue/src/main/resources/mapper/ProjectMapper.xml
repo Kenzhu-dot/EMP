@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.situ.emsvue.mapper.ProjectMapper">
+    <insert id="insert">
+        INSERT INTO project
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name!=null and name!=''">
+                name,
+            </if>
+            <if test="projectProgress!=null and projectProgress!=''">
+                project_progress,
+            </if>
+            <if test="projectSize!=null">
+                project_size,
+            </if>
+            <if test="createTime!=null">
+                create_time,
+            </if>
+            <if test="endTime!=null">
+                end_time,
+            </if>
+            <if test="projectTeamId!=null">
+                project_team_id,
+            </if>
+            <if test="status!=null">
+                status,
+            </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name!=null and name!=''">
+                #{name},
+            </if>
+            <if test="projectProgress!=null and projectProgress!=''">
+                #{projectProgress},
+            </if>
+            <if test="projectSize!=null">
+                #{projectSize},
+            </if>
+            <if test="createTime!=null">
+                #{createTime},
+            </if>
+            <if test="endTime!=null">
+                #{endTime},
+            </if>
+            <if test="projectTeamId!=null">
+                #{projectTeamId},
+            </if>
+            <if test="status!=null">
+                #{status},
+            </if>
+        </trim>
+    </insert>
+    <update id="deleteById">
+        UPDATE project SET deleted=1 WHERE id=#{id}
+    </update>
+    <update id="edit">
+        UPDATE project
+        <set>
+            <if test="name!=null and name!=''">
+                name=#{name},
+            </if>
+            <if test="projectProgress!=null and projectProgress!='' ">
+                project_progress=#{projectProgress},
+            </if>
+            <if test="projectSize!=null">
+                project_size=#{projectSize},
+            </if>
+            <if test="endTime!=null">
+                end_time=#{endTime},
+            </if>
+            <if test="projectTeamId!=null">
+                project_team_id=#{projectTeamId},
+            </if>
+        </set>
+        WHERE id=#{id}
+    </update>
+    <select id="list" resultType="com.situ.emsvue.pojo.VO.ProjectVO">
+        SELECT *,(SELECT name FROM project_team WHERE id=project.project_team_id) AS team_name  FROM project
+        <where>
+            <if test="id!=null">
+                AND id = #{id}
+            </if>
+            <if test="projectTeamId!=null">
+                AND project_team_id =#{projectTeamId}
+            </if>
+            AND deleted=0
+        </where>
+    </select>
+    <select id="selectAll" resultType="com.situ.emsvue.pojo.VO.ProjectVO">
+        SELECT *,(SELECT name FROM project_team WHERE id=project.project_team_id) AS team_name  FROM project WHERE deleted=0
+    </select>
+    <select id="selectById" resultType="com.situ.emsvue.pojo.VO.ProjectVO">
+        SELECT *,(SELECT name FROM project_team WHERE id=project.project_team_id) AS team_name  FROM project WHERE id=#{id} AND deleted=0
+    </select>
+</mapper>

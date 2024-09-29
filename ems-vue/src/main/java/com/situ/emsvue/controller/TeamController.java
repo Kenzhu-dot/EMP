@@ -1,7 +1,7 @@
 package com.situ.emsvue.controller;
 
-import com.situ.emsvue.pojo.VO.AuthVO;
-import com.situ.emsvue.service.IAuthService;
+import com.situ.emsvue.pojo.entity.Team;
+import com.situ.emsvue.service.ITeamService;
 import com.situ.emsvue.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/auth")
-public class AuthController {
+@RequestMapping("/team")
+public class TeamController {
 
     @Autowired
-    IAuthService authService;
+    ITeamService teamService;
 
-    @RequestMapping("/list")
-    public Result list(){
-        List<AuthVO> list = authService.list();
+    @RequestMapping("/selectAll")
+    public Result selectAll(){
+        List<Team> list = teamService.selectAll();
         return Result.ok(list);
     }
 }

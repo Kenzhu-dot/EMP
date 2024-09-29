@@ -1,7 +1,7 @@
 package com.situ.emsvue.mapper;
 
-import com.situ.emsvue.pojo.Auth;
-import com.situ.emsvue.pojo.Role;
+import com.situ.emsvue.pojo.entity.Auth;
+import com.situ.emsvue.pojo.entity.Role;
 
 import java.util.List;
 

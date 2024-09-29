@@ -15,10 +15,10 @@
             </if>
         </set>
     </update>
-    <select id="login" resultType="com.situ.emsvue.pojo.Users">
+    <select id="login" resultType="com.situ.emsvue.pojo.entity.Users">
         SELECT * FROM users WHERE id=#{id} AND pwd=#{pwd}
     </select>
-    <select id="selectOldPassword" resultType="com.situ.emsvue.pojo.Users">
+    <select id="selectOldPassword" resultType="com.situ.emsvue.pojo.entity.Users">
         SELECT * FROM users WHERE id=#{id} AND pwd = #{oldPassword}
     </select>
     <select id="allInfo" resultType="com.situ.emsvue.pojo.VO.UserInfoVO">

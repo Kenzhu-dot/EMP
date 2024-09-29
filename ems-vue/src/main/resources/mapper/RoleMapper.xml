@@ -10,10 +10,10 @@
     <delete id="deletMid">
         DELETE FROM role_to_auth WHERE role_id=#{roleId} AND auth_id=#{authId}
     </delete>
-    <select id="userInform" resultType="com.situ.emsvue.pojo.Auth">
+    <select id="userInform" resultType="com.situ.emsvue.pojo.entity.Auth">
         SELECT * FROM auth WHERE id IN (SELECT auth_id FROM role_to_auth WHERE role_id=#{roleId})
     </select>
-    <select id="list" resultType="com.situ.emsvue.pojo.Role">
+    <select id="list" resultType="com.situ.emsvue.pojo.entity.Role">
         SELECT * FROM role
     </select>
 </mapper>

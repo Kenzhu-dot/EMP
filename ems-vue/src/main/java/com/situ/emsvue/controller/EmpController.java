@@ -1,9 +1,8 @@
 package com.situ.emsvue.controller;
 
-import com.situ.emsvue.pojo.Emp;
+import com.situ.emsvue.pojo.entity.Emp;
 import com.situ.emsvue.pojo.Query.EmpQuery;
 import com.situ.emsvue.service.IEmpService;
-import com.situ.emsvue.util.JwtUtil;
 import com.situ.emsvue.util.Result;
 import com.situ.emsvue.util.ThreadLocalUtil;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.situ.emsvue.mapper;
 
-import com.situ.emsvue.pojo.Emp;
+import com.situ.emsvue.pojo.entity.Emp;
 import com.situ.emsvue.pojo.Query.EmpQuery;
 import com.situ.emsvue.pojo.VO.EmpVO;
 

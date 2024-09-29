@@ -1,4 +1,4 @@
-package com.situ.emsvue.pojo;
+package com.situ.emsvue.pojo.entity;
 
 import lombok.Data;
 

@@ -1,6 +1,5 @@
 package com.situ.emsvue.pojo.VO;
 
-import com.situ.emsvue.pojo.Auth;
 import lombok.Data;
 
 @Data
