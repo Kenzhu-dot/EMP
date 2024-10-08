@@ -54,4 +54,10 @@ public class EmpController {
         empService.edit(emp);
         return Result.ok("更新成功");
     }
+
+    @PutMapping("/updateStatus/{id}/{status}")
+    public Result updateStatus(@PathVariable Integer id, @PathVariable Integer status){
+        empService.updateStatus(id , status);
+        return Result.ok();
+    }
 }

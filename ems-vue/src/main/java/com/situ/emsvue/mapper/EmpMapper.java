@@ -16,4 +16,6 @@ public interface EmpMapper {
     void add(Emp emp);
 
     void edit(Emp emp);
+
+    void updateStatus(Integer id, Integer status);
 }

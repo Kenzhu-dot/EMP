@@ -15,8 +15,11 @@
             </if>
         </set>
     </update>
+    <update id="updateStatus">
+        UPDATE  users SET status=#{status} WHERE id=#{id}
+    </update>
     <select id="login" resultType="com.situ.emsvue.pojo.entity.Users">
-        SELECT * FROM users WHERE id=#{id} AND pwd=#{pwd}
+        SELECT * FROM users WHERE id=#{id} AND pwd=#{pwd} AND deleted=0
     </select>
     <select id="selectOldPassword" resultType="com.situ.emsvue.pojo.entity.Users">
         SELECT * FROM users WHERE id=#{id} AND pwd = #{oldPassword}

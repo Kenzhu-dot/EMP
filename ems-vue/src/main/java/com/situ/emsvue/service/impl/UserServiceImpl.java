@@ -14,6 +14,7 @@ import com.situ.emsvue.util.ThreadLocalUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -32,7 +33,14 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public List<Auth> userInform(Integer roleId) {
-        return roleMapper.userInform(roleId);
+        List<Auth> auths =  roleMapper.userInform(roleId);
+        List<Auth> authList = new ArrayList<Auth>();
+        for (Auth auth : auths) {
+            if (auth.getStatus() != 0){
+                authList.add(auth);
+            }
+        }
+        return authList;
     }
 
     @Override

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.situ.emsvue.mapper.ChartsMapper">
+    <select id="projectCompletion" resultType="com.situ.emsvue.pojo.VO.PieVO">
+        SELECT project_progress AS name ,count(*) AS value FROM project GROUP BY project_progress
+    </select>
+    <select id="projectMonNum" resultType="com.situ.emsvue.pojo.VO.ProjectMonNumVO">
+        SELECT DATE_FORMAT(create_time,'%m') AS name , COUNT(*) AS value FROM project GROUP BY DATE_FORMAT(create_time,'%m')
+    </select>
+    <select id="projectMonNumEnd" resultType="com.situ.emsvue.pojo.VO.ProjectMonNumVO">
+        SELECT DATE_FORMAT(end_time,'%m') AS name , COUNT(*)AS value FROM project GROUP BY DATE_FORMAT(end_time,'%m')
+    </select>
+</mapper>

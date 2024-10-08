@@ -63,6 +63,9 @@
         </set>
         WHERE id = #{id}
     </update>
+    <update id="updateStatus">
+        UPDATE employee SET status=#{status} WHERE id=#{id}
+    </update>
 
     <select id="list" resultType="com.situ.emsvue.pojo.VO.EmpVO">
         SELECT *,(SELECT `name` FROM employee WHERE id=b.leader_id)AS leader_name , (SELECT `name` FROM role WHERE role_id = role.id)AS role_name from employee AS b

@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.situ.emsvue.mapper.EmpMapper;
 import com.situ.emsvue.mapper.RoleMapper;
+import com.situ.emsvue.mapper.UserMapper;
 import com.situ.emsvue.pojo.entity.Emp;
 import com.situ.emsvue.pojo.Query.EmpQuery;
 import com.situ.emsvue.pojo.VO.EmpVO;
@@ -22,6 +23,10 @@ public class EmpServiceImpl implements IEmpService {
     private EmpMapper empMapper;
     @Autowired
     private RoleMapper roleMapper;
+    @Autowired
+    UserMapper userMapper;
+
+
     @Override
     public Map<String,Object> list(EmpQuery empQuery  , Integer roleId) {
         PageHelper.startPage(empQuery.getPage(),empQuery.getLimit());
@@ -58,5 +63,11 @@ public class EmpServiceImpl implements IEmpService {
     @Override
     public void edit(Emp emp) {
         empMapper.edit(emp);
+    }
+
+    @Override
+    public void updateStatus(Integer id, Integer status) {
+        empMapper.updateStatus(id , status);
+        userMapper.updateStatus(id,status);
     }
 }

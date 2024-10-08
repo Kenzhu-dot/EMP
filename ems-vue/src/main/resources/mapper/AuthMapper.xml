@@ -4,7 +4,57 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.situ.emsvue.mapper.AuthMapper">
+    <insert id="add">
+        INSERT INTO auth
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name!=null and name!=''">
+                name ,
+            </if>
+            <if test="path!=null and path!=''">
+                path ,
+            </if>
+            <if test="icon!=null and icon!=''">
+                icon ,
+            </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name!=null and name!=''">
+                #{name},
+            </if>
+            <if test="path!=null and path!=''">
+                #{path} ,
+            </if>
+            <if test="icon!=null and icon!=''">
+                #{icon} ,
+            </if>
+        </trim>
+    </insert>
+    <update id="deleteById">
+        UPDATE auth SET deleted=1 WHERE id=#{id}
+    </update>
+    <update id="edit">
+        UPDATE auth
+        <set>
+            <if test="name!=null and name!=''">
+                name=#{name},
+            </if>
+            <if test="path!=null and path!=''">
+                path=#{path},
+            </if>
+            <if test="icon!=null and icon !=''">
+                icon=#{icon},
+            </if>
+        </set>
+        WHERE id=#{id}
+    </update>
+    <update id="updateStatus">
+        UPDATE auth SET status=#{status} WHERE id=#{id}
+    </update>
     <select id="list" resultType="com.situ.emsvue.pojo.VO.AuthVO">
-        SELECT * FROM auth
+        SELECT * FROM auth WHERE deleted=0
+    </select>
+    <select id="selectById" resultType="com.situ.emsvue.pojo.entity.Auth">
+        SELECT * FROM auth WHERE id=#{id} AND deleted=0
     </select>
 </mapper>

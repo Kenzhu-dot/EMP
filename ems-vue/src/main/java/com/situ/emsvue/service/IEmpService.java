@@ -17,4 +17,6 @@ public interface IEmpService {
     void deleteAll(Integer[] ids);
 
     void edit(Emp emp);
+
+    void updateStatus(Integer id, Integer status);
 }

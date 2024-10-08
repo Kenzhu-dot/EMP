@@ -86,6 +86,9 @@
             <if test="projectTeamId!=null">
                 AND project_team_id =#{projectTeamId}
             </if>
+            <if test="beginEndTime!=null and endEndTime!=null">
+                AND end_time BETWEEN #{beginEndTime} AND #{endEndTime}
+            </if>
             AND deleted=0
         </where>
     </select>

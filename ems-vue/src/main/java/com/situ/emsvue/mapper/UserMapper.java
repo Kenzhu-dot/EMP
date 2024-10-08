@@ -14,4 +14,6 @@ public interface UserMapper {
     UserInfoVO allInfo(Integer id);
 
     void edit(Users user);
+
+    void updateStatus(Integer id, Integer status);
 }

@@ -11,8 +11,8 @@ public class ProjectQuery {
     private String name;
     private String projectProgress;
     private  Integer projectSize;
-    private Date createTime;
-    private Date endTime;
+    private Date beginEndTime;
+    private Date endEndTime;
     private Integer projectTeamId;
     private String teamName;
     private Integer state;

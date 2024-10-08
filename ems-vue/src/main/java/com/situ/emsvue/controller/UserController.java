@@ -40,6 +40,9 @@ public class UserController {
         if (user == null) {
             return Result.error("用户名或密码错误");
         }
+        if (user.getStatus() == 0) {
+            return Result.error("该用户已被禁用");
+        }
         Map<String, Object> map = new HashMap<>();
         map.put("id", user.getId());
         map.put("roleId", user.getRoleId());
