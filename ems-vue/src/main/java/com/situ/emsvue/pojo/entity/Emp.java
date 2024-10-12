@@ -15,4 +15,5 @@ public class Emp {
     private Integer leaveRecord;
     private Integer status;
     private Integer deleted;
+    private Integer teamId;
 }

@@ -3,7 +3,22 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.situ.emsvue.mapper.TeamMapper">
+    <insert id="add">
+        INSERT INTO project_team(name) VALUES(#{name})
+    </insert>
+    <update id="deletedById">
+        UPDATE project_team SET deleted=1 WHERE id = #{id}
+    </update>
     <select id="selectAll" resultType="com.situ.emsvue.pojo.entity.Team">
-        SELECT * FROM  project_team
+        SELECT * FROM  project_team WHERE deleted = 0
+    </select>
+    <select id="selectPNByTeamId" resultType="java.lang.String">
+        SELECT name FROM project WHERE project_team_id = #{id} AND deleted = 0
+    </select>
+    <select id="selectENByTeamId" resultType="java.lang.String">
+        SELECT name FROM employee WHERE team_id = #{id} AND deleted = 0
+    </select>
+    <select id="selectNumber">
+        UPDATE project_team SET number=(SELECT COUNT(*) FROM employee WHERE team_id=project_team.id AND deleted=0)
     </select>
 </mapper>

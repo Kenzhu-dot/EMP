@@ -60,6 +60,9 @@
             <if test="leaderId != null">
                 leader_id = #{leaderId},
             </if>
+            <if test="teamId!=null">
+                team_id = #{teamId}
+            </if>
         </set>
         WHERE id = #{id}
     </update>
@@ -68,7 +71,11 @@
     </update>
 
     <select id="list" resultType="com.situ.emsvue.pojo.VO.EmpVO">
-        SELECT *,(SELECT `name` FROM employee WHERE id=b.leader_id)AS leader_name , (SELECT `name` FROM role WHERE role_id = role.id)AS role_name from employee AS b
+        SELECT *,
+               (SELECT `name` FROM employee WHERE id=b.leader_id)AS leader_name ,
+               (SELECT `name` FROM role WHERE role_id = role.id)AS role_name,
+               (SELECT `name` FROM project_team WHERE team_id = id)AS team_name
+        from employee AS b
         <where>
             <if test="empQuery.name!='' and empQuery.name!=null">
                 AND name LIKE CONCAT ('%',#{empQuery.name},'%')

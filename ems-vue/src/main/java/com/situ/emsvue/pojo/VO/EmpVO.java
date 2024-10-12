@@ -16,5 +16,6 @@ public class EmpVO {
     private Integer leaveRecord;
     private Integer status;
     private Integer deleted;
+    private String teamName;
     private String leaderName;
 }
