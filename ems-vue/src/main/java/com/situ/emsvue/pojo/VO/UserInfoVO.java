@@ -7,4 +7,6 @@ public class UserInfoVO {
     private String image;
     private String name;
     private String gender;
+    private Integer leaderId;
+    private String leaderName;
 }
